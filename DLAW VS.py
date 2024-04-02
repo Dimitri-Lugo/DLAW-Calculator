@@ -10,9 +10,10 @@ Builder.load_file('./calculator.kv')
 Window.size = (350, 550)
 
 class CalculatorWidget(Widget):
+
     # Clear the screen
     def clear(self):
-        self.ids.input_box.text = "0"
+        self.ids.input_box.text = ""
 
     # Remove the last character
     def remove_last(self):
@@ -62,7 +63,7 @@ class CalculatorWidget(Widget):
             result = eval(prev_number)
             self.ids.input_box.text = str(result)
         except:
-            self.ids.input_box.text = "wrong equation"
+            self.ids.input_box.text = "Error"
 
     # Positive to negative
     def positive_negative(self):
@@ -75,6 +76,7 @@ class CalculatorWidget(Widget):
 
 class CalculatorApp(App):
     def build(self):
+        self.title = "DLAW"
         return CalculatorWidget()
 
 if __name__ == "__main__":
