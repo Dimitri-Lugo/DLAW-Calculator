@@ -1,21 +1,45 @@
 <Button>
     size_hint: (0.2, 0.2)
     background_normal: ''
-    background_color: (2/255, 10/255, 24/255, 1)
+    background_color: (0.068, 0.068, 0.068, 1)
+
+    
 
 <CalculatorWidget>
     BoxLayout
         orientation: "vertical"
         size: root.width, root.height
 
+        BoxLayout:
+            size_hint: (1, 0.2)  # Adjust the size of this row as needed
+            padding: [10, 35]  # Add some padding if needed
+            Button:
+                text: "Calculator"
+                background_normal: ''  # Remove the button's default background
+                background_color: (0, 0, 0, 0)  # Transparent background
+                on_press: self.color = 0, 1, 0, 1  # Change foreground color when pressed
+                on_release: self.color = 1, 1, 1, 1  # Restore original foreground color when released
+            Button:
+                text: "Mortgage"
+                background_normal: ''
+                background_color: (0, 0, 0, 0)
+                on_press: self.color = 0, 1, 0, 1  # Change foreground color when pressed
+                on_release: self.color = 1, 1, 1, 1  # Restore original foreground color when released
+            
+            Button:
+                text: "Tip"
+                background_normal: ''
+                background_color: (0, 0, 0, 0)
+                on_press: self.color = 0, 1, 0, 1  # Change foreground color when pressed
+                on_release: self.color = 1, 1, 1, 1  # Restore original foreground color when released
+
         TextInput:
             id: input_box
-            text: "0"
             font_size: 43
             multiline: False
             halign: "right"
-            size_hint: (1, 0.19)
-            background_color: (20/255, 20/255, 30/255, 1)
+            size_hint: (1, 0.35)
+            background_color: (0, 0, 0, 0)
             foreground_color: (1, 1, 1, 1)
 
         GridLayout:
@@ -24,25 +48,27 @@
 
             ### Row 1 ####
             Button:
-                text: "%"
-                font_size: 32
-                on_press: root.sings("%")
-
-            Button:
-                text: "C"
+                text: "AC"
                 font_size: 32
                 on_press: root.clear()
 
             Button:
-                text: u"\u00AB"
+                text: "+/-"
                 font_size: 32
-                on_press: root.remove_last()
+                on_press: root.positive_negative()
+                color: 0,1,0,1
+
+            Button:
+                text: "%"
+                font_size: 32
+                on_press: root.sings("%")
+                color: 0,1,0,1
 
             Button:
                 text: "/"
                 font_size: 32
-                background_color: (14/255, 73/255, 176/255, 1)
                 on_press: root.sings("/")
+                color: 0,1,0,1
 
             #### Row 2 #####
             Button:
@@ -63,8 +89,8 @@
             Button:
                 text: "x"
                 font_size: 32
-                background_color: (14/255, 73/255, 176/255, 1)
                 on_press: root.sings("*")
+                color: 0,1,0,1
 
             #### Row 3 ###
             Button:
@@ -85,8 +111,8 @@
             Button:
                 text: "-"
                 font_size: 32
-                background_color: (14/255, 73/255, 176/255, 1)
                 on_press: root.sings("-")
+                color: 0,1,0,1
 
             ### Row 4 ###
             Button:
@@ -107,14 +133,14 @@
             Button:
                 text: "+"
                 font_size: 32
-                background_color: (14/255, 73/255, 176/255, 1)
                 on_press: root.sings("+")
+                color: 0,1,0,1
 
             ### Row 5 ###
             Button:
-                text: "+/-"
+                text: "^"
                 font_size: 32
-                on_press: root.positive_negative()
+                on_press: root.sings("**")
 
             Button:
                 text: "0"
@@ -129,5 +155,4 @@
             Button:
                 text: "="
                 font_size: 32
-                background_color: (14/255, 73/255, 176/255, 1)
                 on_press: root.results()
