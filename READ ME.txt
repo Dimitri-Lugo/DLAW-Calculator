@@ -1,0 +1,10 @@
+Product Owner: Dimitri Lugo
+Team Members: Amanda White
+
+Mortgage & Tip Tabs: You enter the data that the calculator is requesting and then press the "=" to input it, which will bring up the following prompt.
+
+MAKE SURE YOU STORE THE KALAM FONT, CALCULATOR.KV, AND DLAW VS.PY FILES IN THE SAME FOLDER AS ONE ANOTHER
+
+If you experience any issues or if something isn't functioning as intended, then please send an email to dimitrilugo25@outlook.com reporting the issue.
+
+Thank you!
