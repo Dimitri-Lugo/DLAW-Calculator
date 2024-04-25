@@ -73,9 +73,9 @@ class CalculatorWidget(Widget):
             self.ids.input_box.text = f"{prev_number}{number}"
 
     # Getting the signs
-    def sings(self, sing):
+    def signs(self, sign):
         prev_number = self.ids.input_box.text
-        self.ids.input_box.text = f"{prev_number}{sing}"
+        self.ids.input_box.text = f"{prev_number}{sign}"
 
     # Getting decimal value
     def dot(self):
