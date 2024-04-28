@@ -108,7 +108,7 @@ class CalculatorWidget(Widget):
         if(not prev_number): return
         try:
             result = eval(prev_number)
-            self.ids.input_box.text = str(result)
+            self.ids.input_box.text = str(round(result, 7))
         except:
             self.ids.input_box.text = "Error"
     ### Calculating Expected Monthly Mortgage Payment Function ###
