@@ -71,6 +71,46 @@ class TestCalculatorApp(GraphicUnitTest):
         if text:
             self.assertAlmostEqual(float(text), 10.0, places=2)  # Check calculated tip amount
 
+    def test_invalid_input_mortgage(self):
+        # Test invalid input for mortgage calculation
+        self.root.change_tab(1)
+        self.root.button_value("abc")
+        self.root.results()
+        self.assertEqual(self.root.ids.input_box.text, "Error")
+
+    def test_invalid_input_tip(self):
+        # Test invalid input for tip calculation
+        self.root.change_tab(2)
+        self.root.button_value("xyz")
+        self.root.results()
+        self.assertEqual(self.root.ids.input_box.text, "Error")
+
+    def test_mortgage_missing_inputs(self):
+        # Test mortgage calculation with missing inputs
+        self.root.change_tab(1)
+        self.root.button_value(100000)
+        self.root.results()
+        self.root.button_value(20000)
+        self.root.results()
+        self.assertNotEqual(self.root.ids.input_box.text, "Error")
+        self.assertEqual(self.root.ids.input_prompt.text, "Enter the interest rate (as a decimal)")
+
+    def test_tip_missing_inputs(self):
+        # Test tip calculation with missing inputs
+        self.root.change_tab(2)
+        self.root.button_value(50)
+        self.root.results()
+        self.assertNotEqual(self.root.ids.input_box.text, "Error")
+        self.assertEqual(self.root.ids.input_prompt.text, "Enter your desired tip percentage (as a decimal)")
+
+    def test_zero_input(self):
+        # Test zero input for calculations
+        self.root.button_value(0)
+        self.root.signs("/")
+        self.root.button_value(0)
+        self.root.results()
+        self.assertEqual(self.root.ids.input_box.text, "Error")
+
 # Checks whether the script is being run directly as the main program or being imported by another script
 if __name__ == '__main__':
     unittest.main()
